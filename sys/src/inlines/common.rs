@@ -10,74 +10,112 @@ pub const JS_EXCEPTION: JSValue = JS_MKVAL(JS_TAG_EXCEPTION, 0);
 pub const JS_UNINITIALIZED: JSValue = JS_MKVAL(JS_TAG_UNINITIALIZED, 0);
 
 #[inline]
-pub unsafe fn JS_VALUE_HAS_REF_COUNT(v: JSValue) -> bool {
-    JS_VALUE_GET_TAG(v) as c_uint >= JS_TAG_FIRST as c_uint
+pub fn JS_VALUE_HAS_REF_COUNT(v: JSValue) -> bool {
+    unsafe {
+        JS_VALUE_GET_TAG(v) as c_uint >= JS_TAG_FIRST as c_uint
+    }
+
 }
 
 #[inline]
-pub unsafe fn JS_IsNumber(v: JSValue) -> bool {
-    let tag = JS_VALUE_GET_TAG(v);
-    tag == JS_TAG_INT || JS_TAG_IS_FLOAT64(tag)
+pub fn JS_IsNumber(v: JSValue) -> bool {
+    unsafe {
+        let tag = JS_VALUE_GET_TAG(v);
+        tag == JS_TAG_INT || JS_TAG_IS_FLOAT64(tag)
+    }
 }
 
 #[inline]
-pub unsafe fn JS_IsInt(v: JSValue) -> bool {
-    let tag = JS_VALUE_GET_TAG(v);
-    tag == JS_TAG_INT
+pub fn JS_IsFloat64(v: JSValue) -> bool {
+    unsafe {
+        let tag = JS_VALUE_GET_TAG(v);
+        JS_TAG_IS_FLOAT64(tag)
+    }
+}
+
+
+#[inline]
+pub fn JS_IsInt(v: JSValue) -> bool {
+    unsafe {
+        let tag = JS_VALUE_GET_TAG(v);
+        tag == JS_TAG_INT
+    }
+
 }
 
 #[inline]
-pub unsafe fn JS_IsBigInt(v: JSValue) -> bool {
-    let tag = JS_VALUE_GET_TAG(v);
-    tag == JS_TAG_BIG_INT
+pub fn JS_IsBigInt(v: JSValue) -> bool {
+    unsafe {
+        let tag = JS_VALUE_GET_TAG(v);
+        tag == JS_TAG_BIG_INT
+    }
 }
 
 #[inline]
-pub unsafe fn JS_IsBool(v: JSValue) -> bool {
-    let tag = JS_VALUE_GET_TAG(v);
-    tag == JS_TAG_BOOL
+pub fn JS_IsBool(v: JSValue) -> bool {
+    unsafe {
+        let tag = JS_VALUE_GET_TAG(v);
+        tag == JS_TAG_BOOL
+    }
+
 }
 
 #[inline]
-pub unsafe fn JS_IsNull(v: JSValue) -> bool {
-    let tag = JS_VALUE_GET_TAG(v);
-    tag == JS_TAG_NULL
+pub fn JS_IsNull(v: JSValue) -> bool {
+    unsafe {
+        let tag = JS_VALUE_GET_TAG(v);
+        tag == JS_TAG_NULL
+    }
+
 }
 
 #[inline]
-pub unsafe fn JS_IsUndefined(v: JSValue) -> bool {
-    let tag = JS_VALUE_GET_TAG(v);
-    tag == JS_TAG_UNDEFINED
+pub fn JS_IsUndefined(v: JSValue) -> bool {
+    unsafe {
+        let tag = JS_VALUE_GET_TAG(v);
+        tag == JS_TAG_UNDEFINED
+    }
 }
 
 #[inline]
-pub unsafe fn JS_IsException(v: JSValue) -> bool {
-    let tag = JS_VALUE_GET_TAG(v);
-    tag == JS_TAG_EXCEPTION
+pub fn JS_IsException(v: JSValue) -> bool {
+    unsafe {
+        let tag = JS_VALUE_GET_TAG(v);
+        tag == JS_TAG_EXCEPTION
+    }
 }
 
 #[inline]
-pub unsafe fn JS_IsUninitialized(v: JSValue) -> bool {
-    let tag = JS_VALUE_GET_TAG(v);
-    tag == JS_TAG_UNINITIALIZED
+pub fn JS_IsUninitialized(v: JSValue) -> bool {
+    unsafe {
+        let tag = JS_VALUE_GET_TAG(v);
+        tag == JS_TAG_UNINITIALIZED
+    }
 }
 
 #[inline]
-pub unsafe fn JS_IsString(v: JSValue) -> bool {
-    let tag = JS_VALUE_GET_TAG(v);
-    tag == JS_TAG_STRING
+pub fn JS_IsString(v: JSValue) -> bool {
+    unsafe {
+        let tag = JS_VALUE_GET_TAG(v);
+        tag == JS_TAG_STRING
+    }
+
 }
 
 #[inline]
-pub unsafe fn JS_IsSymbol(v: JSValue) -> bool {
-    let tag = JS_VALUE_GET_TAG(v);
-    tag == JS_TAG_SYMBOL
+pub fn JS_IsSymbol(v: JSValue) -> bool {
+    unsafe {
+        let tag = JS_VALUE_GET_TAG(v);
+        tag == JS_TAG_SYMBOL
+    }
 }
 
 #[inline]
-pub unsafe fn JS_IsObject(v: JSValue) -> bool {
-    let tag = JS_VALUE_GET_TAG(v);
-    tag == JS_TAG_OBJECT
+pub fn JS_IsObject(v: JSValue) -> bool {
+    unsafe {
+        let tag = JS_VALUE_GET_TAG(v);
+        tag == JS_TAG_OBJECT
+    }
 }
 
 #[inline]

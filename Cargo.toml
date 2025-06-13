@@ -25,7 +25,7 @@ members = [
 [workspace.dependencies]
 rquickjs-core = { version = "0.9.0", path = "core" }
 rquickjs-macro = { version = "0.9.0", path = "macro" }
-rquickjs-sys = { version = "0.9.0", path = "sys", package = "deft-rquickjs-sys" }
+rquickjs-sys = { version = "0.10.0", path = "sys", package = "deft-rquickjs-sys" }
 rquickjs = { version = "0.9.0", path = "./" }
 
 [dependencies]

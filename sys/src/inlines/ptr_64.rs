@@ -1,5 +1,5 @@
 #[inline]
-pub unsafe fn JS_VALUE_GET_TAG(v: JSValue) -> i32 {
+pub fn JS_VALUE_GET_TAG(v: JSValue) -> i32 {
     v.tag as _
 }
 
