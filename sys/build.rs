@@ -188,7 +188,7 @@ fn main() {
         }
     }
 
-    if target_os == "wasi" {
+    if target_os == "wasi" || target_os == "emscripten" {
         // pretend we're emscripten - there are already ifdefs that match
         // also, wasi doesn't ahve FE_DOWNWARD or FE_UPWARD
         defines.push(("EMSCRIPTEN".into(), Some("1")));
@@ -236,6 +236,8 @@ fn main() {
         builder.file(out_dir.join(src));
     }
 
+    // Enable source map
+    // builder.flag("-gsource-map").flag("-sWASM=1");
     builder.compile("libquickjs.a");
 }
 
