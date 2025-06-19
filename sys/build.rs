@@ -218,6 +218,14 @@ fn main() {
         );
         env::set_var("CFLAGS", &sysroot);
         bindgen_cflags.push(sysroot);
+    } else if target_os == "emscripten" {
+        let emsdk_path = env::var("EMSDK").expect("env EMSDK not set");
+        let sysroot = format!(
+            "--sysroot={}/upstream/emscripten/cache/sysroot",
+            emsdk_path
+        );
+        env::set_var("CFLAGS", &sysroot);
+        bindgen_cflags.push(sysroot);
     }
 
     // generating bindings
